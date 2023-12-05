@@ -8,7 +8,7 @@ export default function ContactUs() {
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/giammarco-boscaro-OPzWvgL-upY-unsplash.jpg" // Make sure the path is correct
+            src="/240_F_485397626_ydPEYshMKRIyY7HIH2jUCLu8nkC7X2KH.jpg" // Make sure the path is correct
             layout="fill"
             objectFit="cover"
             quality={100}
