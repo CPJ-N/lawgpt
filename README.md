@@ -1,6 +1,5 @@
-
 # lawgpt
-This tools is to help lawyers with the research of case findings
+This tool is to help lawyers in India with their legal research.
 =======
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -23,6 +22,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Tech Stack
+
+- [OpenAI](https://openai.com/) for Large Language Models (LLM)
+- [Supabase](https://supabase.com/) for the database
+- [LangChain](https://langchain.com/) for building language model applications
 
 ## Learn More
 

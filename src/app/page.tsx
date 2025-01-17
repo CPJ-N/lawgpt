@@ -11,14 +11,13 @@ export default function Home() {
     router.push('/chatbot');
   };
 
-  
   return (
     <div>
       <div className="relative w-full h-screen">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/giammarco-boscaro-OPzWvgL-upY-unsplash.jpg" // Make sure the path is correct
+            src="/giammarco-boscaro-OPzWvgL-upY-unsplash.jpg" // Updated path to the new image
             layout="fill"
             objectFit="cover"
             quality={100}

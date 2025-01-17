@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 export default function Footer(){
   return (
     <footer className="bg-gray-900 text-white p-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="mb-6">
           <h2 className="text-xl font-bold mb-4">Subscribe to Our Newsletter</h2>
           <p className="mb-4">
@@ -21,7 +21,6 @@ export default function Footer(){
           </form>
         </div>
 
-        {/* You can map through these items if you have a list */}
         <div>
           <h2 className="font-bold mb-3">Law Firm</h2>
           <div className="flex space-x-4 mb-6">
@@ -34,7 +33,7 @@ export default function Footer(){
 
         <div>
           <h2 className="font-bold mb-3">Our Firm</h2>
-          <ul>
+          <ul className="space-y-2">
             <li>About Us</li>
             <li>Contact</li>
             <li>Practice Areas</li>
@@ -45,7 +44,7 @@ export default function Footer(){
 
         <div>
           <h2 className="font-bold mb-3">Others</h2>
-          <ul>
+          <ul className="space-y-2">
             <li>Case Results</li>
             <li>Packages</li>
             <li>Package Single</li>
@@ -56,7 +55,7 @@ export default function Footer(){
 
         <div>
           <h2 className="font-bold mb-3">Utilities</h2>
-          <ul>
+          <ul className="space-y-2">
             <li>Style Guide</li>
             <li>Instructions</li>
             <li>Licenses</li>
@@ -66,7 +65,7 @@ export default function Footer(){
         </div>
       </div>
       <div className="text-center text-gray-400 text-sm mt-8 border-t border-gray-700 pt-4">
-        © 2023 Legal Firm. All Rights Reserved. Built by Yves Adrales. Powered by Webflow.
+        © 2023 Legal Firm. All Rights Reserved. Built by Charles Nischal
       </div>
     </footer>
   );
