@@ -10,13 +10,19 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "@radix-ui/react-navigation-menu": "^1.2.3",
     "@supabase/supabase-js": "^2.38.5",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "langchain": "^0.0.197-rc.1",
+    "lucide-react": "^0.473.0",
     "next": "14.0.3",
     "pdf-parse": "^1.1.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
