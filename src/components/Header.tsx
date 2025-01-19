@@ -51,12 +51,12 @@ const components: { title: string; href: string; description: string }[] = [
 export default function Header() {
   return (
     <header className="fixed w-full top-0 z-50">
-      <nav className="bg-brand-darkblue shadow-lg">
+      <nav className="bg-brand-white shadow-lg">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0">
               <Link href="/" className="flex items-center">
-                <span className="font-semibold text-brand-white text-xl hover:text-brand-skyblue transition-colors">
+                <span className="font-semibold text-brand-darkblue text-xl hover:text-brand-skyblue transition-colors">
                   LawGPT
                 </span>
               </Link>
@@ -66,7 +66,7 @@ export default function Header() {
               <NavigationMenuList className="bg-transparent">
                 <NavigationMenuItem>
                   <Link href="/" legacyBehavior passHref>
-                    <NavigationMenuLink className="text-brand-white hover:text-brand-skyblue transition-colors px-4 py-2">
+                    <NavigationMenuLink className="text-brand-darkblue hover:text-brand-skyblue transition-colors px-4 py-2">
                       Home
                     </NavigationMenuLink>
                   </Link>
@@ -74,11 +74,11 @@ export default function Header() {
 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger 
-                    className="bg-transparent text-brand-white hover:text-brand-skyblue data-[state=open]:text-brand-skyblue hover:bg-transparent focus:bg-transparent">
+                    className="bg-transparent text-brand-darkblue hover:text-brand-skyblue data-[state=open]:text-brand-skyblue hover:bg-transparent focus:bg-transparent">
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid gap-2 p-4 w-[200px] bg-white rounded-lg shadow-lg">
+                    <div className="grid gap-2 p-4 w-[200px] bg-brand-white rounded-lg shadow-lg">
                       <Link href="/chatbot" 
                         className="px-3 py-2 rounded-md text-brand-darkblue hover:bg-brand-skyblue/10 hover:text-brand-blue transition-colors">
                         Chatbot
