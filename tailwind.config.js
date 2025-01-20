@@ -83,6 +83,30 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
         'scroll': 'scroll 40s linear infinite',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: '#374151',
+            hr: {
+              borderColor: '#E5E7EB',
+              marginTop: '2rem',
+              marginBottom: '2rem',
+            },
+            'h1, h2, h3, h4': {
+              color: '#111827',
+              fontWeight: '700',
+            },
+            a: {
+              color: '#2563EB',
+              textDecoration: 'none',
+              '&:hover': {
+                textDecoration: 'underline',
+              },
+            },
+          },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
