@@ -178,7 +178,7 @@ export default function Header() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/signin" legacyBehavior passHref>
+                  <Link href="/login" legacyBehavior passHref>
                     <NavigationMenuLink className="ml-4 px-4 py-2 bg-brand-white text-brand-darkblue rounded-md hover:bg-brand-white/90 transition-colors font-medium">
                       Sign in
                     </NavigationMenuLink>

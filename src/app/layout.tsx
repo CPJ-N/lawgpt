@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { headers } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,12 +17,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const headersList = headers()
+  const isAuthPage = headersList.get('x-auth-page') === '1'
+
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header/>
-        {children}
-        <Footer/>
+        {!isAuthPage && <Header />}
+        <main>{children}</main>
+        {!isAuthPage && <Footer />}
       </body>
     </html>
   )
