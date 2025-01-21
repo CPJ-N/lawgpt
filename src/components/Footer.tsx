@@ -1,80 +1,84 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
-export default function Footer(){
+export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-brand-darkblue via-brand-mediumblue to-brand-skyblue text-brand-white p-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="mb-6">
-          <h2 className="text-xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-          <p className="mb-4 text-brand-white/80">
-            Our newsletter is packed with valuable insights, analysis, and advice from our team of legal experts. Sign up now!
-          </p>
-          <form className="flex">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="p-2 rounded-l bg-brand-darkblue/20 border-brand-skyblue/20 border text-brand-white placeholder:text-brand-white/50"
-            />
-            <button className="bg-brand-skyblue p-2 rounded-r hover:bg-brand-mediumblue transition-colors">
-              →
-            </button>
-          </form>
-        </div>
-
-        <div>
-          <h2 className="font-bold mb-3">Law Firm</h2>
-          <div className="flex space-x-4 mb-6">
-            <a href="#" className="text-brand-white/80 hover:text-brand-skyblue transition-colors">
-              <FaFacebook size={20} />
-            </a>
-            <a href="#" className="text-brand-white/80 hover:text-brand-skyblue transition-colors">
-              <FaInstagram size={20} />
-            </a>
-            <a href="#" className="text-brand-white/80 hover:text-brand-skyblue transition-colors">
-              <FaTwitter size={20} />
-            </a>
-            <a href="#" className="text-brand-white/80 hover:text-brand-skyblue transition-colors">
-              <FaYoutube size={20} />
-            </a>
+    <footer className="bg-gradient-to-br from-brand-darkblue via-brand-mediumblue to-brand-skyblue">
+      <div className="container px-4 py-16 mx-auto">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold text-brand-white">Subscribe to Our Newsletter</h2>
+            <p className="text-brand-white/80">
+              Stay updated with legal insights and expert advice.
+            </p>
+            <div className="flex space-x-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="bg-brand-darkblue/20 border-brand-skyblue/20 text-brand-white placeholder:text-brand-white/50"
+              />
+              <Button variant="secondary" className="px-6 hover:bg-brand-skyblue">
+                Subscribe
+              </Button>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h2 className="font-bold mb-3">Our Firm</h2>
-          <ul className="space-y-2">
-            <li>About Us</li>
-            <li>Contact</li>
-            <li>Practice Areas</li>
-            <li>Lawyers</li>
-            <li>Lawyers Single</li>
-          </ul>
-        </div>
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold text-brand-white">Connect With Us</h2>
+            <div className="flex space-x-6">
+              {[
+                { icon: FaFacebook, href: '#' },
+                { icon: FaInstagram, href: '#' },
+                { icon: FaTwitter, href: '#' },
+                { icon: FaYoutube, href: '#' },
+              ].map((social, index) => (
+                <Link
+                  key={index}
+                  href={social.href}
+                  className="text-brand-white/80 hover:text-brand-skyblue transform hover:scale-110 transition-all"
+                >
+                  <social.icon size={24} />
+                </Link>
+              ))}
+            </div>
+          </div>
 
-        <div>
-          <h2 className="font-bold mb-3">Others</h2>
-          <ul className="space-y-2">
-            <li>Case Results</li>
-            <li>Packages</li>
-            <li>Package Single</li>
-            <li>Blog</li>
-            <li>Blog Single</li>
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="font-bold mb-3">Utilities</h2>
-          <ul className="space-y-2">
-            <li>Style Guide</li>
-            <li>Instructions</li>
-            <li>Licenses</li>
-            <li>Changelog</li>
-            <li>404</li>
-          </ul>
+          {[
+            {
+              title: "Our Firm",
+              links: ["About Us", "Contact", "Practice Areas", "Lawyers", "Lawyers Single"]
+            },
+            {
+              title: "Resources",
+              links: ["Case Results", "Packages", "Package Single", "Blog", "Blog Single"]
+            }
+          ].map((section, index) => (
+            <div key={index} className="space-y-4">
+              <h2 className="text-xl font-bold text-brand-white">{section.title}</h2>
+              <ul className="space-y-2">
+                {section.links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    <Link 
+                      href="#" 
+                      className="text-brand-white/80 hover:text-brand-white transition-colors duration-200 block"
+                    >
+                      {link}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="text-center text-brand-white/60 text-sm mt-8 border-t border-brand-skyblue/10 pt-4">
-        © 2023 Legal Firm. All Rights Reserved. Built by Charles Nischal
+      
+      <div className="border-t border-brand-skyblue/10">
+        <div className="container px-4 py-6 mx-auto text-center text-sm text-brand-white/60">
+          <p>© {new Date().getFullYear()} Legal Firm. All Rights Reserved. Built by Charles Nischal</p>
+        </div>
       </div>
     </footer>
-  );
-};
+  )
+}
