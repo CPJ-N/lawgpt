@@ -146,7 +146,7 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem href="/docs" title="Solo Practitioners">
+                      <ListItem href="/solo-practitioners" title="Solo Practitioners">
                         Manage your cases & causelist in one place
                       </ListItem>
                       <ListItem href="/docs/installation" title="Small & Medium Chambers">
