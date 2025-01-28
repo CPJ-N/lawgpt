@@ -116,7 +116,6 @@ export default function Home() {
     <div className="bg-brand-white min-h-screen">
       {/* Hero Section */}
       <div className="relative h-screen">
-        {/* Background Image */}
         <Image
           src="/240_F_485397626_ydPEYshMKRIyY7HIH2jUCLu8nkC7X2KH.jpg"
           alt="Law Office"
@@ -124,238 +123,271 @@ export default function Home() {
           className="object-cover"
           priority
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-darkblue/80 to-brand-darkblue/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-darkblue/80 to-brand-darkblue/90">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
+        </div>
         
         <div className="relative z-10 flex flex-col justify-center items-end h-full max-w-6xl mx-auto px-4">
-          <h1 className="text-6xl text-brand-white font-bold mb-4 max-w-2xl text-right">
-            Modern Legal Solutions for a Complex World
-          </h1>
-          <p className="text-xl text-brand-white/90 mb-8 max-w-xl text-right">
-            We are a dedicated team of legal professionals providing expert services for all your legal needs.
-          </p>
-          <button 
-            onClick={handleButtonClick}
-            className="bg-brand-white text-brand-darkblue px-8 py-3 rounded-full text-lg font-medium hover:bg-brand-white/90 transition duration-300 shadow-lg">
-            FREE CONSULTATION
-          </button>
-        </div>
-      </div>
-
-      {/* Pattern Background for Sections */}
-      <div className="relative">        
-        {/* Products Section */}
-        <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-white to-brand-skyblue/5">
-          <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
-          Our Solutions
-        </h2>
-        <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
-          Benefit from our full platform or from combinations of our ready-to-deploy modules.
-        </p>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product, index) => (
-            <div 
-          key={index} 
-          className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-skyblue/10"
-            >
-          <div className="text-4xl mb-4">{product.icon}</div>
-          <h3 className="text-xl font-semibold text-brand-darkblue mb-2">
-            {product.title}
-          </h3>
-          <p className="text-brand-blue/70 mb-4 text-sm">
-            {product.description}
-          </p>
-          <ul className="space-y-2">
-            {product.features.map((feature, idx) => (
-              <li key={idx} className="text-sm text-brand-mediumblue/80 flex items-center">
-            <span className="mr-2 text-brand-skyblue">•</span>
-            {feature}
-              </li>
-            ))}
-          </ul>
-            </div>
-          ))}
-        </div>
-          </div>
-        </section>
-
-        {/* Case Studies Section */}
-        <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-skyblue/5 to-brand-white">
-          <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
-          Case Studies
-        </h2>
-        <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
-          Solving real world problems
-        </p>
-        <div className="grid md:grid-cols-3 gap-8">
-          {caseStudies.map((caseStudy, index) => (
-            <div 
-          key={index} 
-          className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-          <div className="text-4xl mb-4">{caseStudy.image}</div>
-          <h3 className="text-xl font-semibold text-brand-darkblue mb-2">
-            {caseStudy.title}
-          </h3>
-          <p className="text-brand-blue/70 mb-4 text-sm">
-            <strong>Challenge:</strong> {caseStudy.challenge}
-          </p>
-          <p className="text-brand-blue/70 mb-4 text-sm">
-            <strong>Solution:</strong> {caseStudy.solution}
-          </p>
-          <ul className="space-y-2">
-            {caseStudy.results.map((result, idx) => (
-              <li key={idx} className="text-sm text-brand-mediumblue/80 flex items-center">
-            <span className="mr-2 text-brand-skyblue">•</span>
-            {result}
-              </li>
-            ))}
-          </ul>
-          <p className="text-brand-blue/70 mt-4 text-sm">
-            <strong>Industry:</strong> {caseStudy.industry}
-          </p>
-            </div>
-          ))}
-        </div>
-          </div>
-        </section>
-
-        {/* Divider Section */}
-        <div className="relative py-16 bg-gradient-to-r from-brand-darkblue via-brand-blue to-brand-skyblue">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-8 text-brand-white">
-              <div className="text-center">
-                <h3 className="text-4xl font-bold mb-2">2000+</h3>
-                <p className="text-brand-white/80">Cases Handled</p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-4xl font-bold mb-2">98%</h3>
-                <p className="text-brand-white/80">Success Rate</p>
-              </div>
-              <div className="text-center">
-                <h3 className="text-4xl font-bold mb-2">250+</h3>
-                <p className="text-brand-white/80">Expert Attorneys</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Customers Section */}
-        <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-white to-brand-skyblue/5">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
-              Our Customers
-            </h2>
-        <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
-          Trusted by forward-thinking businesses around the world.
-        </p>
-        
-        <LogoCarousel />
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="relative z-10 py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
-              Recommended by Industry Pioneers
-            </h2>
-            <p className="text-xl text-brand-blue/80 text-center mb-12">
-              Trusted by leading legal professionals and organizations worldwide
+          <div className="animate-fade-in-right">
+            <h1 className="text-6xl md:text-7xl text-brand-white font-bold mb-6 max-w-2xl text-right leading-tight tracking-tight">
+              AI-Powered <span className="text-brand-skyblue">Legal</span> Solutions
+            </h1>
+            <p className="text-xl md:text-2xl text-brand-white/90 mb-10 max-w-xl text-right leading-relaxed">
+              Transforming legal practice with cutting-edge AI technology and expert guidance.
             </p>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div 
-                  key={index} 
-                  className="bg-gradient-to-br from-white to-brand-skyblue/5 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
-                >
-                  {/* Decorative quote mark */}
-                  <div className="absolute top-4 right-4 text-6xl text-brand-skyblue/10 font-serif">
-                    "
-                  </div>
-                  <blockquote className="text-brand-darkblue/80 mb-6 relative z-10">
-                    "{testimonial.text}"
-                  </blockquote>
-                  <div className="border-t border-brand-skyblue/20 pt-4">
-                    <p className="font-semibold text-brand-darkblue">{testimonial.name}</p>
-                    <p className="text-sm text-brand-blue">{testimonial.role}</p>
-                    <p className="text-sm text-brand-mediumblue/70">{testimonial.company}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="flex gap-4 justify-end">
+              <button 
+                onClick={handleButtonClick}
+                className="group relative px-8 py-4 rounded-full text-lg font-medium overflow-hidden"
+              >
+                <span className="absolute inset-0 w-full h-full transition-all duration-300 
+                  bg-gradient-to-r from-brand-skyblue via-brand-mediumblue to-brand-skyblue 
+                  group-hover:bg-gradient-to-l"></span>
+                <span className="relative text-white flex items-center">
+                  Start Free Trial
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" 
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                      d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </button>
+              <button 
+                onClick={() => router.push('/demo')}
+                className="px-8 py-4 rounded-full text-lg font-medium border-2 border-white 
+                  text-white hover:bg-white hover:text-brand-darkblue transition-all duration-300"
+              >
+                Watch Demo
+              </button>
             </div>
           </div>
-        </section>
-
-        {/* Integrations Section */}
-        <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-skyblue/5 to-brand-white">
-          <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
-          Powerful Integrations
-        </h2>
-        <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
-          Integrates with your existing tech stack to free your team of time-consuming tasks and data transfer errors.
-        </p>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {integrations.map((integration, index) => (
-            <div 
-          key={index} 
-          className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-skyblue/10 group"
-            >
-          <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-            {integration.icon}
-          </div>
-          <h3 className="text-xl font-semibold text-brand-darkblue mb-2">
-            {integration.name}
-          </h3>
-          <p className="text-brand-blue/70 mb-4 text-sm">
-            {integration.description}
-          </p>
-          <ul className="space-y-2">
-            {integration.features.map((feature, idx) => (
-              <li key={idx} className="text-sm text-brand-mediumblue/80 flex items-center">
-            <span className="mr-2 text-brand-skyblue">•</span>
-            {feature}
-              </li>
-            ))}
-          </ul>
-            </div>
-          ))}
         </div>
-          </div>
-        </section>
       </div>
 
-      {/* CTA Section */}
+      {/* Products Section */}
+      <section className="relative z-10 py-24 px-4 bg-gradient-to-b from-brand-white to-brand-skyblue/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <span className="text-brand-skyblue text-sm font-semibold tracking-wider uppercase">Our Solutions</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-brand-darkblue mt-4 mb-6">
+              Comprehensive Legal Tech Solutions
+            </h2>
+            <div className="w-24 h-1 bg-brand-skyblue mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map((product, index) => (
+              <div 
+                key={index} 
+                className="group bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl 
+                  transition-all duration-300 border border-brand-skyblue/10 
+                  hover:border-brand-skyblue/30 hover:-translate-y-1"
+              >
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {product.icon}
+                </div>
+                <h3 className="text-2xl font-semibold text-brand-darkblue mb-4">
+                  {product.title}
+                </h3>
+                <p className="text-brand-blue/70 mb-6">
+                  {product.description}
+                </p>
+                <ul className="space-y-3">
+                  {product.features.map((feature, idx) => (
+                    <li key={idx} className="text-brand-mediumblue/80 flex items-center">
+                      <span className="w-2 h-2 rounded-full bg-brand-skyblue mr-3"></span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Case Studies Section */}
+      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-skyblue/5 to-brand-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
+            Case Studies
+          </h2>
+          <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
+            Solving real world problems
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {caseStudies.map((caseStudy, index) => (
+              <div 
+                key={index} 
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="text-4xl mb-4">{caseStudy.image}</div>
+                <h3 className="text-xl font-semibold text-brand-darkblue mb-2">
+                  {caseStudy.title}
+                </h3>
+                <p className="text-brand-blue/70 mb-4 text-sm">
+                  <strong>Challenge:</strong> {caseStudy.challenge}
+                </p>
+                <p className="text-brand-blue/70 mb-4 text-sm">
+                  <strong>Solution:</strong> {caseStudy.solution}
+                </p>
+                <ul className="space-y-2">
+                  {caseStudy.results.map((result, idx) => (
+                    <li key={idx} className="text-sm text-brand-mediumblue/80 flex items-center">
+                      <span className="mr-2 text-brand-skyblue">•</span>
+                      {result}
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-brand-blue/70 mt-4 text-sm">
+                  <strong>Industry:</strong> {caseStudy.industry}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Divider Section */}
+      <div className="relative py-16 bg-gradient-to-r from-brand-darkblue via-brand-blue to-brand-skyblue">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8 text-brand-white">
+            <div className="text-center">
+              <h3 className="text-4xl font-bold mb-2">2000+</h3>
+              <p className="text-brand-white/80">Cases Handled</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-4xl font-bold mb-2">98%</h3>
+              <p className="text-brand-white/80">Success Rate</p>
+            </div>
+            <div className="text-center">
+              <h3 className="text-4xl font-bold mb-2">250+</h3>
+              <p className="text-brand-white/80">Expert Attorneys</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Customers Section */}
+      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-white to-brand-skyblue/5">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
+            Our Customers
+          </h2>
+          <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
+            Trusted by forward-thinking businesses around the world.
+          </p>
+          
+          <LogoCarousel />
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="relative z-10 py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
+            Recommended by Industry Pioneers
+          </h2>
+          <p className="text-xl text-brand-blue/80 text-center mb-12">
+            Trusted by leading legal professionals and organizations worldwide
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index} 
+                className="bg-gradient-to-br from-white to-brand-skyblue/5 p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
+              >
+                {/* Decorative quote mark */}
+                <div className="absolute top-4 right-4 text-6xl text-brand-skyblue/10 font-serif">
+                  "
+                </div>
+                <blockquote className="text-brand-darkblue/80 mb-6 relative z-10">
+                  "{testimonial.text}"
+                </blockquote>
+                <div className="border-t border-brand-skyblue/20 pt-4">
+                  <p className="font-semibold text-brand-darkblue">{testimonial.name}</p>
+                  <p className="text-sm text-brand-blue">{testimonial.role}</p>
+                  <p className="text-sm text-brand-mediumblue/70">{testimonial.company}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Integrations Section */}
+      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-brand-skyblue/5 to-brand-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-brand-darkblue text-center mb-4">
+            Powerful Integrations
+          </h2>
+          <p className="text-xl text-brand-blue/80 text-center mb-12 max-w-3xl mx-auto">
+            Integrates with your existing tech stack to free your team of time-consuming tasks and data transfer errors.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {integrations.map((integration, index) => (
+              <div 
+                key={index} 
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 border border-brand-skyblue/10 group"
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {integration.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-brand-darkblue mb-2">
+                  {integration.name}
+                </h3>
+                <p className="text-brand-blue/70 mb-4 text-sm">
+                  {integration.description}
+                </p>
+                <ul className="space-y-2">
+                  {integration.features.map((feature, idx) => (
+                    <li key={idx} className="text-sm text-brand-mediumblue/80 flex items-center">
+                      <span className="mr-2 text-brand-skyblue">•</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced CTA Section */}
       <div className="max-w-6xl mx-auto px-4 mb-20">
-        <div className="bg-brand-darkblue relative overflow-hidden rounded-2xl">
+        <div className="bg-gradient-to-r from-brand-darkblue to-brand-mediumblue relative overflow-hidden rounded-2xl">
           <div className="px-8 py-16 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-              <div className="text-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-white max-w-2xl">
-                  Have questions about Pricing, Plans, or Attorneia?
+              <div className="text-left animate-fade-in-left">
+                <h2 className="text-4xl md:text-5xl font-bold text-brand-white max-w-2xl leading-tight">
+                  Ready to Transform Your Legal Practice?
                 </h2>
+                <p className="text-xl text-brand-white/80 mt-4">
+                  Join thousands of satisfied legal professionals worldwide.
+                </p>
               </div>
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 animate-fade-in-right">
                 <button 
                   onClick={() => router.push('/demo')}
-                  className="bg-brand-skyblue hover:bg-brand-mediumblue text-brand-white px-8 py-3 rounded-full text-lg font-medium transition-colors duration-300 shadow-lg hover:shadow-xl"
+                  className="group relative px-8 py-4 rounded-full text-lg font-medium overflow-hidden"
                 >
-                  Request Demo
+                  <span className="absolute inset-0 w-full h-full transition-all duration-300 
+                    bg-white group-hover:bg-brand-skyblue"></span>
+                  <span className="relative text-brand-darkblue group-hover:text-white flex items-center">
+                    Schedule a Demo
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" 
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
                 </button>
               </div>
             </div>
           </div>
-          {/* Decorative Elements */}
-          <div className="absolute right-0 top-0 h-full w-1/3 opacity-5">
-            <div className="absolute right-0 top-1/4 w-64 h-64 rounded-full bg-brand-skyblue transform translate-x-1/2"></div>
-            <div className="absolute right-24 top-1/2 w-32 h-32 rounded-full bg-brand-white transform -translate-y-1/2"></div>
-          </div>
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         </div>
       </div>
     </div>
