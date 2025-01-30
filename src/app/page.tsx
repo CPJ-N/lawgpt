@@ -119,14 +119,50 @@ export default function Home() {
   const router = useRouter();
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const y = useTransform(scrollY, [0, 300], [0, 100]);
+  const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref);
 
   const handleButtonClick = () => {
     router.push('/chatbot');
   };
 
   return (
-    <div className="bg-brand-white min-h-screen">
-      {/* Hero Section - Enhanced contrast */}
+    <div className="bg-brand-white min-h-screen relative">
+      {/* Scroll Indicator */}
+      <motion.div 
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 opacity-80 hover:opacity-100 transition-opacity duration-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+      >
+        <motion.div
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+          className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2"
+        >
+          <motion.div
+            animate={{
+              y: [0, 4, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+            className="w-1.5 h-1.5 rounded-full bg-white"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Hero Section - Enhanced with parallax */}
       <div className="relative min-h-screen overflow-hidden">
         {/* Background layers with better contrast */}
         <div className="absolute inset-0">
@@ -142,17 +178,56 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-radial from-brand-skyblue/20 via-transparent to-transparent opacity-40"></div>
         </div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-skyblue/10 rounded-full filter blur-3xl animate-blob"></div>
-          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-mediumblue/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-skyblue/5 rounded-full filter blur-3xl animate-pulse"></div>
-        </div>
-        
-        <motion.div style={{ opacity }} className="relative z-10 flex flex-col justify-center items-end h-screen max-w-7xl mx-auto px-6">
+        {/* Enhanced Floating Elements with Parallax */}
+        <motion.div 
+          style={{ y }}
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+        >
           <motion.div 
+            animate={{ 
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, 0] 
+            }}
+            transition={{ 
+              duration: 20,
+              repeat: Infinity,
+              repeatType: "reverse" 
+            }}
+            className="absolute top-1/4 -left-20 w-96 h-96 bg-brand-skyblue/10 rounded-full filter blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, -5, 0] 
+            }}
+            transition={{ 
+              duration: 15,
+              repeat: Infinity,
+              repeatType: "reverse" 
+            }}
+            className="absolute bottom-1/4 -right-20 w-96 h-96 bg-brand-mediumblue/10 rounded-full filter blur-3xl"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.1, 1] 
+            }}
+            transition={{ 
+              duration: 10,
+              repeat: Infinity,
+              repeatType: "reverse" 
+            }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-skyblue/5 rounded-full filter blur-3xl"
+          />
+        </motion.div>
+        
+        <motion.div 
+          style={{ opacity, y, scale }} 
+          className="relative z-10 flex flex-col justify-center items-end h-screen max-w-7xl mx-auto px-6"
+        >
+          <motion.div 
+            ref={ref}
             initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-8 md:text-right text-center md:items-end items-center flex flex-col max-w-3xl"
           >
@@ -180,7 +255,7 @@ export default function Home() {
               </motion.p>
             </div>
 
-            {/* Enhanced buttons with better hover effects */}
+            {/* Enhanced buttons with more sophisticated hover effects */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -193,12 +268,15 @@ export default function Home() {
               >
                 <span className="absolute inset-0 w-full h-full transition-all duration-500 ease-out transform 
                   bg-gradient-to-r from-brand-skyblue via-brand-mediumblue to-brand-skyblue 
-                  group-hover:bg-gradient-to-l bg-size-200 bg-pos-0 group-hover:bg-pos-100"></span>
+                  group-hover:bg-gradient-to-l bg-size-200 bg-pos-0 group-hover:bg-pos-100
+                  after:absolute after:inset-0 after:bg-white/20 after:opacity-0 after:transition-opacity after:duration-300
+                  group-hover:after:opacity-100"
+                ></span>
                 <span className="relative text-white flex items-center">
                   Start Free Trial
                   <motion.svg 
                     whileHover={{ x: 5 }}
-                    className="w-5 h-5 ml-2"
+                    className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
@@ -211,41 +289,55 @@ export default function Home() {
                 className="group px-8 py-4 rounded-full text-lg font-medium border-2 border-white/30 
                   text-white hover:bg-white/10 transform hover:scale-105 
                   transition-all duration-300 backdrop-blur-sm hover:border-white
-                  hover:shadow-lg hover:shadow-white/20"
+                  hover:shadow-lg hover:shadow-white/20
+                  relative overflow-hidden"
               >
-                <span className="flex items-center">
+                <span className="absolute inset-0 w-full h-full bg-white/0 group-hover:bg-white/10 transition-colors duration-300"></span>
+                <span className="relative flex items-center">
                   Watch Demo
-                  <span className="ml-2 group-hover:rotate-45 transition-transform duration-300">▶</span>
+                  <motion.span 
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="ml-2 opacity-50 group-hover:opacity-100"
+                  >
+                    ▶
+                  </motion.span>
                 </span>
               </button>
             </motion.div>
 
-            {/* Enhanced Stats bar with better contrast */}
+            {/* Enhanced Stats bar with better visual hierarchy and animations */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="mt-16 flex gap-12 py-6 px-10 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20
-                hover:bg-white/15 transition-colors duration-300 shadow-xl shadow-black/10"
+              className="mt-16 flex gap-12 py-8 px-12 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20
+                hover:bg-white/15 transition-all duration-300 shadow-xl shadow-black/10
+                hover:shadow-2xl hover:shadow-brand-skyblue/20"
             >
               {[
-                { number: "2000+", label: "Cases Handled" },
-                { number: "98%", label: "Success Rate" },
-                { number: "250+", label: "Expert Attorneys" }
+                { number: "2000+", label: "Cases Handled", icon: "⚖️" },
+                { number: "98%", label: "Success Rate", icon: "📈" },
+                { number: "250+", label: "Expert Attorneys", icon: "👨‍⚖️" }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 + (index * 0.1) }}
-                  className="text-center relative group"
+                  className="text-center relative group cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
                 >
                   <div className="absolute inset-0 bg-brand-skyblue/20 blur-2xl rounded-full group-hover:blur-3xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-                  <div className="relative">
-                    <div className="text-4xl font-bold bg-gradient-to-r from-white to-brand-skyblue bg-clip-text text-transparent">
+                  <div className="relative space-y-2">
+                    <div className="text-2xl opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                      {stat.icon}
+                    </div>
+                    <div className="text-4xl font-bold bg-gradient-to-r from-white to-brand-skyblue bg-clip-text text-transparent
+                      group-hover:to-white transition-colors duration-300">
                       {stat.number}
                     </div>
-                    <div className="text-sm text-white/80 font-light tracking-wider">
+                    <div className="text-sm text-white/80 font-light tracking-wider group-hover:text-white transition-colors duration-300">
                       {stat.label}
                     </div>
                   </div>
