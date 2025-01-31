@@ -7,9 +7,13 @@ import { retriever } from '../../utils/retriever';
 import { combineDocuments } from '../../utils/combineDocuments';
 import { RunnablePassthrough, RunnableSequence } from "langchain/schema/runnable";
 import { formatConvHistory } from '../../utils/formatConvHistory';
-import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { Send } from 'lucide-react';
 import Head from 'next/head';
 import Image from 'next/image';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 interface Message {
   text: string;
@@ -134,58 +138,83 @@ export default function ChatbotComponent() {
   };
 
   return (
-    <div className="bg-gray-800">
+    <div className="min-h-screen bg-background">
       <Head>Chat Interface</Head>
-      <div className="flex flex-col h-screen bg-gray-800 text-white">
+      <div className="flex flex-col h-screen">
         {messages && messages.length === 0 ? (
-          <div className="flex flex-col items-center justify-center flex-grow">
-            <div className="mb-8">
-              <Image src="/240_F_485397626_ydPEYshMKRIyY7HIH2jUCLu8nkC7X2KH.jpg" alt="Logo" width={100} height={100} layout="fixed" />
+          <div className="flex flex-col items-center justify-center flex-grow px-4 animate-fade-in-up">
+            <div className="mb-8 transform hover:scale-105 transition-transform duration-300">
+              <Image 
+                src="/240_F_485397626_ydPEYshMKRIyY7HIH2jUCLu8nkC7X2KH.jpg" 
+                alt="Logo" 
+                width={120} 
+                height={120} 
+                className="rounded-full shadow-lg"
+                layout="fixed" 
+              />
             </div>
-            <h1 className="text-4xl font-semibold mb-10">How can I help you today?</h1>
-            <div className="grid grid-cols-2 gap-4 max-w-md">
-              <button className="bg-gray-700 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={() => handleQuestionClick(0)}>
-                what is the Indian Penal code?
-              </button>
-              <button className="bg-gray-700 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={() => handleQuestionClick(1)}>
-                what is Punishment of offences committed within India?
-              </button>
-              <button className="bg-gray-700 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={() => handleQuestionClick(2)}>
-                Tell me about Falsification of accounts
-              </button>
-              <button className="bg-gray-700 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={() => handleQuestionClick(3)}>
-                Describe Property mark.
-              </button>
+            <h1 className="text-4xl font-bold mb-10 text-center text-foreground">
+              How can I help you today?
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full px-4">
+              {sampleQuestion.map((question, index) => (
+                <Button
+                  key={index}
+                  variant="secondary"
+                  className="h-auto py-4 px-6 text-left hover:bg-accent transition-all duration-300 
+                    shadow-lg hover:shadow-xl text-sm md:text-base animate-fade-in-up whitespace-normal break-words
+                    min-h-[80px] flex items-start justify-start"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => handleQuestionClick(index)}
+                >
+                  {question}
+                </Button>
+              ))}
             </div>
           </div>
         ) : (
-          <div className="flex-grow overflow-y-auto p-4 space-y-2 mt-16">
+          <div className="flex-grow overflow-y-auto p-4 space-y-4 mt-16">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`p-2 rounded-lg max-w-lg mx-auto ${message.sender === 'bot' ? 'bg-blue-500 text-white ml-auto mr-2' : 'bg-gray-100 text-gray-800 mr-auto ml-2'}`}
+                className={cn(
+                  "flex",
+                  message.sender === 'bot' ? 'justify-start' : 'justify-end',
+                  message.sender === 'bot' ? 'animate-fade-in-left' : 'animate-fade-in-right'
+                )}
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                {message.text}
+                <Card
+                  className={cn(
+                    "p-4 max-w-[80%] md:max-w-[70%] shadow-md hover:shadow-lg transition-all duration-200 break-words",
+                    message.sender === 'bot' 
+                      ? 'bg-secondary text-secondary-foreground ml-2' 
+                      : 'bg-primary text-primary-foreground mr-2'
+                  )}
+                >
+                  <p className="text-sm md:text-base leading-relaxed whitespace-pre-wrap">{message.text}</p>
+                </Card>
               </div>
             ))}
           </div>
         )}
-        <div className="w-full px-4 py-16">
-          <div className="flex items-center w-full max-w-xl mx-auto bg-gray-700 rounded-full">
-            <input
+        <div className="w-full px-4 py-6 bg-background/95 backdrop-blur-sm border-t">
+          <div className="flex items-center gap-2 w-full max-w-2xl mx-auto">
+            <Input
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               onKeyPress={handleUserInput}
               placeholder="Message LawGPT..."
-              className="w-full py-2 pl-5 bg-transparent text-white placeholder-gray-400 outline-none"
+              className="flex-1"
             />
-            <button
+            <Button
               onClick={sendMessage}
-              className="p-2 rounded-full bg-gray-600 hover:bg-gray-500 transition duration-200"
+              size="icon"
+              className="shrink-0"
             >
-              <PaperAirplaneIcon className="w-6 h-6 text-gray-400 rotate" />
-            </button>
+              <Send className="h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>
