@@ -7,13 +7,15 @@ import { retriever } from '../../utils/retriever';
 import { combineDocuments } from '../../utils/combineDocuments';
 import { RunnablePassthrough, RunnableSequence } from "langchain/schema/runnable";
 import { formatConvHistory } from '../../utils/formatConvHistory';
-import { Send } from 'lucide-react';
+import { Send, ArrowLeft, MessageSquare, Settings } from 'lucide-react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Link from 'next/link';
+import { Separator } from "@/components/ui/separator";
 
 interface Message {
   text: string;
@@ -140,7 +142,39 @@ export default function ChatbotComponent() {
   return (
     <div className="min-h-screen bg-background">
       <Head>Chat Interface</Head>
-      <div className="flex flex-col h-screen">
+      <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b z-50">
+        <div className="container flex h-16 items-center px-4">
+          <div className="flex items-center gap-2 md:gap-4">
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Button variant="ghost" size="icon" className="h-8 w-8">
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Separator orientation="vertical" className="h-6" />
+            <div className="flex items-center gap-2">
+              <div className="rounded-full bg-primary/10 p-1">
+                <MessageSquare className="h-5 w-5 text-primary" />
+              </div>
+              <h1 className="font-semibold text-lg hidden md:block">LawGPT Assistant</h1>
+            </div>
+          </div>
+          
+          <div className="flex flex-1 items-center justify-end gap-2">
+            <div className="flex items-center gap-2 text-muted-foreground text-sm">
+              <span className="hidden md:inline">Powered by OpenAI</span>
+              <Separator orientation="vertical" className="h-6 hidden md:block" />
+            </div>
+            <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Settings className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      <main className="flex flex-col h-screen pt-16">
         {messages && messages.length === 0 ? (
           <div className="flex flex-col items-center justify-center flex-grow px-4 animate-fade-in-up">
             <div className="mb-8 transform hover:scale-105 transition-transform duration-300">
@@ -153,9 +187,9 @@ export default function ChatbotComponent() {
                 layout="fixed" 
               />
             </div>
-            <h1 className="text-4xl font-bold mb-10 text-center text-foreground">
+            <h2 className="text-4xl font-bold mb-10 text-center text-foreground">
               How can I help you today?
-            </h1>
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl w-full px-4">
               {sampleQuestion.map((question, index) => (
                 <Button
@@ -173,7 +207,7 @@ export default function ChatbotComponent() {
             </div>
           </div>
         ) : (
-          <div className="flex-grow overflow-y-auto p-4 space-y-4 mt-16">
+          <div className="flex-grow overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -217,7 +251,7 @@ export default function ChatbotComponent() {
             </Button>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
